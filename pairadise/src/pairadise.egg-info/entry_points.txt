@@ -1,0 +1,7 @@
+[console_scripts]
+pairadise_annotate = pairadise_annotate.scripts.annotate:main
+pairadise_assign = pairadise_assign.scripts.assign:main
+pairadise_count = pairadise_count.scripts.count:main
+pairadise_map = pairadise_map.scripts.map:main
+pairadise_personalize = pairadise_personalize.scripts.personalize:main
+

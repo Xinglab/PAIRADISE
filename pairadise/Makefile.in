@@ -1,0 +1,63 @@
+# The following applies to this software package and all subparts therein
+#
+# PAIRADISE -- Copyright (C) 2015 Levon Demirdjian, Shayna R. Stein, 
+#              Emad Bahrami-Samani, Yi Xing, and University of California, 
+#              Los Angeles (UCLA).
+# This library is free software; you can redistribute it and/or modify it under
+# the terms of the GNU Lesser General Public License as published by the Free
+# Software Foundation; either version 2.1 of the License, or (at your option)
+# any later version.
+#
+# This library is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+# details.
+#
+# You should have received a copy of the GNU Lesser General Public License along
+# with this library; if not, write to the Free Software Foundation, Inc., 51
+# Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+
+################################################################################
+##			      INSTALLATION				  ##
+################################################################################
+
+uninstall :
+	pip uninstall pairadise
+
+install :
+	rm -rf dist
+	python setup.py sdist
+	pip install --upgrade dist/pairadise-1.0.0.tar.gz
+	R CMD INSTALL src/pairadise_model/
+
+################################################################################
+##			      DOCUMENTATION				 ##
+################################################################################
+
+docs :
+	$(MAKE) -C sphinx clean
+	$(MAKE) -C sphinx html
+	rm -rf Docs/doctrees
+	mv Docs/html/* Docs
+	mv Docs/html/.buildinfo Docs
+	rmdir Docs/html
+.PHONY : docs
+
+################################################################################
+##			       UNIT TESTS				   ##
+################################################################################
+
+test :
+	python src/test.py
+	./src/smokeTests.sh
+
+################################################################################
+##			      HOUSEKEEPING				  ##
+################################################################################
+
+clean :
+	rm -f `find . -name "*.pyc"`
+	rm -rf dist
+	rm -rf Docs
+	rm -rf src/pairadise.egg-info
