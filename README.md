@@ -3,7 +3,7 @@
 
 PAIRADISE (**PAI**red **R**eplicate analysis of **A**llelic **DI**fferential **S**plicing **E**vents) is a method for detecting allele-specific alternative splicing (ASAS) from RNA-seq data. Unlike conventional approaches that detect ASAS events one sample at a time, PAIRADISE aggregates ASAS signals across multiple individuals in a population. By treating the two alleles of an individual as paired, and multiple individuals sharing a heterozygous SNP as replicates, PAIRADISE formulates ASAS detection as a statistical problem for identifying differential alternative splicing from RNA-seq data with paired replicates.
 
-![GM12878_ASAS_Analysis](https://github.com/LevonDem/GM12878_ASAS_Analysis/blob/master/Figure1.jpg)
+![PAIRADISE](https://github.com/Xinglab/PAIRADISE/blob/master/manuscript_figures/Figure1/Figure1.jpg)
 
 ## Table of Contents
 
