@@ -1,15 +1,14 @@
-# PAIRADISE
+# PAIRADISE - Paired Replicate Analysis of Allelic Differential Splicing Events
 ## <a name="PAIRADISE"></a>What is PAIRADISE ?
 
 PAIRADISE (**PAI**red **R**eplicate analysis of **A**llelic **DI**fferential **S**plicing **E**vents) is a method for detecting allele-specific alternative splicing (ASAS) from RNA-seq data. Unlike conventional approaches that detect ASAS events one sample at a time, PAIRADISE aggregates ASAS signals across multiple individuals in a population. By treating the two alleles of an individual as paired, and multiple individuals sharing a heterozygous SNP as replicates, PAIRADISE formulates ASAS detection as a statistical problem for identifying differential alternative splicing from RNA-seq data with paired replicates.
 
-![PAIRADISE](https://github.com/Xinglab/PAIRADISE/blob/master/manuscript_figures/Figure1/Figure1.jpg)
+<img src="https://github.com/Xinglab/PAIRADISE/blob/master/manuscript_figures/Figure1/Figure1.jpg" width="500" height="450" />
 
 ## Table of Contents
 
-- [What is PAIRADISE ?](#PAIRADISE)
 - [Installation](#install)
-- [Using PAIRADISE] (#use)
+- [Using PAIRADISE](#use)
 - [Contact](#contact)
 
 ## <a name="install"></a>Installation
@@ -26,7 +25,8 @@ In addition, the following R packages must be installed before installing PAIRAD
 - foreach >= (1.4.4)
 
 Download PAIRADISE from github:
-	git clone github.com/Xinglab/PAIRADISE/pairadise
+
+```git clone github.com/Xinglab/PAIRADISE/pairadise```
   
 Change your working directory to "pairadise", `cd pairadise`, and run the following commands to configure and install PAIRADISE:
 
