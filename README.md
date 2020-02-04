@@ -191,7 +191,7 @@ We have developed a data visualization tool in R Shiny for visualizing the resul
 
 ## <a name="contact"></a>Contact
 
-Levon Demirdjian demirdjial@email.chop.edu
+Levon Demirdjian levondem@gmail.com
 
 Yi Xing xingyi@email.chop.edu
 
