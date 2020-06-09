@@ -80,8 +80,8 @@ pairadise <- function(my.data,
                            seed = 12321,
                            equal.variance = FALSE){
 
-  if(numCluster <= 0 | numCluster > 8){
-    stop("Error: Number of clusters must be between 1 and 8")
+  if(numCluster <= 0){
+    stop("Error: Number of clusters must be at least 1")
   }
 
   if(sig.level <= 0 | sig.level >= 1){
