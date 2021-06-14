@@ -213,6 +213,7 @@ pairadise <- function(my.data,
     MLE1.upper.u <- c(s.upper, s.upper, s.upper, mu.upper, Inf)
     MLE1.upper.c <- c(s.upper, s.upper, s.upper, mu.upper, 0)
 
+    calculation_error <- FALSE
     for(t in 1:nIter){
 
       ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ##
@@ -335,7 +336,16 @@ pairadise <- function(my.data,
       ll.new.u <- loglikelihood(M, I1, S1, I2, S2, l.iI, l.iS, logit.psi1.u[t,], logit.psi2.u[t,], alpha.u[t,], s1.u[t], s2.u[t], s.u[t], mu.u[t], delta.u[t])
       ll.new.c <- loglikelihood(M, I1, S1, I2, S2, l.iI, l.iS, logit.psi1.c[t,], logit.psi2.c[t,], alpha.c[t,], s1.c[t], s2.c[t], s.c[t], mu.c[t], delta.c[t])
 
-      if((abs(ll.new.u - ll.old.u) < tol) & (abs(ll.new.c - ll.old.c) < tol)){
+      ll.change.u <- abs(ll.new.u - ll.old.u)
+      ll.change.c <- abs(ll.new.c - ll.old.c)
+
+      if (is.na(ll.change.u) | is.infinite(ll.change.u) |
+          is.na(ll.change.c) | is.infinite(ll.change.c)) {
+        calculation_error <- TRUE
+        break
+      }
+
+      if((ll.change.u < tol) & (ll.change.c < tol)){
         break
       }
 
@@ -372,7 +382,9 @@ pairadise <- function(my.data,
     ## In these cases, set them to a very small number, so they correspond
     ## to p-value = 1.
     test.stat <- -2 * (ll.new.c - ll.new.u)
-    test.stat[test.stat < 0] <- 10^(-6)
+    if (calculation_error | (test.stat < 0)) {
+      test.stat <- 10^(-6)
+    }
 
     output <- list(test.stat, delta.u[t], mu.u[t], mu.c[t], s1.u[t], s2.u[t], s.u[t],
                    s1.c[t], s2.c[t], s.c[t], sigmoid(logit.psi1.u[t+1,]),
