@@ -126,8 +126,12 @@ pairadise <- function(my.data,
 
   writeLines(c(""), "pairadise_status.txt")
 
-  results <- foreach(iExon = 1:nExon, .combine = cbind, .packages = c("nloptr")) %dopar% {
-
+  if (length(exonList) >= 24857) {
+    cat(paste0('exonList[24857]: ', exonList[24857], '\n'))
+  }
+  is_first_result <- TRUE
+  results <- NA
+  for (iExon in 1:nExon) {
     ## Write progress to log
     sink("pairadise_status.txt", append=TRUE)
     cat("ExonID ", exonList[iExon], '.[',
@@ -381,9 +385,13 @@ pairadise <- function(my.data,
                    as.vector(I1 - pseudocount), as.vector(S1 - pseudocount),
                    as.vector(I2 - pseudocount), as.vector(S2 - pseudocount))
 
-    output
-
+    if (is_first_result) {
+      results <- output
+      is_first_result <- FALSE
+    } else {
+      results <- cbind(results, output)
     }
+  }
 
   stopCluster(cl)
   cat("Clusters closed\n")
