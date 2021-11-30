@@ -339,13 +339,12 @@ pairadise <- function(my.data,
       ll.change.u <- abs(ll.new.u - ll.old.u)
       ll.change.c <- abs(ll.new.c - ll.old.c)
 
-      if (is.na(ll.change.u) | is.infinite(ll.change.u) |
-          is.na(ll.change.c) | is.infinite(ll.change.c)) {
+      if (!is.finite(ll.change.u) | !is.finite(ll.change.c)) {
         calculation_error <- TRUE
         break
       }
 
-      if((ll.change.u < tol) & (ll.change.c < tol)){
+      if ((ll.change.u < tol) & (ll.change.c < tol)) {
         break
       }
 
