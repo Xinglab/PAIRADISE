@@ -186,7 +186,7 @@ PAIRADISE outputs a table of significant ASAS events (default significance is se
 
 ## <a name="shiny"></a>Shiny App
 We have developed a data visualization tool in R Shiny for visualizing the results of PAIRADISE. The app can be accessed
-<a href="http://xingshiny.research.chop.edu:3838/PAIRADISE/" target="_blank">here</a>. Have fun!
+<a href="https://xingshiny.research.chop.edu/PAIRADISE/" target="_blank">here</a>. Have fun!
 
 
 ## <a name="contact"></a>Contact
